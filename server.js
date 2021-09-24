@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const errorHandler = require("./middleware/error");
 const bootcamps = require("./routes/bootcamps");
 const courses = require("./routes/courses");
+const cookieParser = require("cookie-parser");
 const auth = require("./routes/auth");
 const colors = require("colors");
 const connectDB = require("./config/db");
@@ -20,6 +21,9 @@ const app = express();
 
 //Body parser
 app.use(express.json());
+
+//Cookie parser
+app.use(cookieParser());
 
 //Dev logging middleware
 if (process.env.NODE_ENV === "development") {
